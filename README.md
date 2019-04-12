@@ -1,3 +1,78 @@
+## VS Code Settings
+
+```
+{
+  "eslint.alwaysShowStatus": true,
+  "editor.fontSize": 14,
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "Fira Code",
+  "editor.tabSize": 2,
+  "editor.renderIndentGuides": true,
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "eslint.autoFixOnSave": true,
+  "eslint.run": "onSave",
+  "editor.cursorBlinking": "phase",
+  "window.openFilesInNewWindow": "off",
+  "explorer.openEditors.visible": 0,
+  "javascript.validate.enable": false,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true
+  },
+  "files.associations": {
+    "*.ejs": "html"
+  },
+  "git.confirmSync": false,
+  "window.zoomLevel": 0,
+  "javascript.format.enable": false,
+  "files.autoSave": "off",
+  // "workbench.colorTheme": "Cobalt2",
+  "git.ignoreLegacyWarning": true,
+  "extensions.ignoreRecommendations": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "git.enableSmartCommit": true,
+  "editor.minimap.enabled": true,
+  "importCost.javascriptExtensions": [
+    "\\.js",
+    "\\.jsx?$"
+  ],
+  "git.autofetch": true,
+  "editor.foldingStrategy": "indentation",
+  "gitlens.advanced.messages": {
+    "suppressShowKeyBindingsNotice": true
+  },
+  "workbench.startupEditor": "newUntitledFile",
+  "explorer.confirmDelete": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "explorer.confirmDragAndDrop": false,
+  "terminal.integrated.rendererType": "dom",
+  "workbench.colorTheme": "Night Owl",
+  "editor.snippetSuggestions": "top",
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.php$",
+        "cmd": "prettier ${file} --write"
+      }
+    ]
+  },
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  "javascript.updateImportsOnFileMove.enabled": "never"
+}
+```
+
+## Plugins 
+
+![Imgur](https://i.imgur.com/BRLtf40.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
