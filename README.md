@@ -69,6 +69,13 @@
 }
 ```
 
+##Update dependencies
+
+```
+$ npx npm-check-updates -u
+$ npm install 
+```
+
 ## Plugins 
 
 ![Imgur](https://i.imgur.com/BRLtf40.png)
