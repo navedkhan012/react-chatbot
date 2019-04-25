@@ -69,7 +69,7 @@
 }
 ```
 
-##Update dependencies
+## Update dependencies
 
 ```
 $ npx npm-check-updates -u
