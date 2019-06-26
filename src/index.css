@@ -1,14 +1,32 @@
-body {
+*{
+  box-sizing: border-box;
+}
+
+html,body {
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  font-stretch: normal;
+  color: #000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+input {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px !important;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
 }

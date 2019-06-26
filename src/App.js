@@ -1,23 +1,73 @@
-import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React, { useEffect } from 'react'
+import styled, { ThemeProvider } from 'styled-components'
+import Cookies from 'js-cookie'
+import { BrowserRouter as Router, Switch, Route, withRouter, Redirect } from 'react-router-dom'
+import { has } from 'lodash'
+import qs from 'qs'
+import axios from 'axios'
+import Colors from './statics/Colors'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-            Learn React
-          </a>
-        </header>
-      </div>
-    )
-  }
+import { LoginAndSignup } from './pages/Authentication'
+
+const PrivateOnlyRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props => {
+      // check params for access token for google and github signup
+      const urlparams = qs.parse(props.location.search.slice(1))
+      console.log('urlparams', urlparams)
+      if (has(urlparams, 'access_token')) {
+        Cookies.set('access_token', urlparams.access_token, { path: '/' })
+        axios.defaults.headers['Authorization'] = `Token ${urlparams.access_token}`
+        return <Redirect to={{ pathname: '/' }} />
+      } else {
+        const token = Cookies.get('access_token')
+        axios.defaults.headers['Authorization'] = `Token ${Cookies.get('access_token')}`
+        if (token) {
+          return <Component {...props} />
+        } else {
+          return (
+            <Redirect
+              to={{
+                pathname: '/login',
+                state: { from: props.location }
+              }}
+            />
+          )
+        }
+      }
+    }}
+  />
+)
+const PublicOnlyRoute = ({ component: Component, ...rest }) => {
+  return <Route {...rest} render={props => <Component {...props} />} />
+}
+function ScrollToTop({ history }) {
+  useEffect(() => {
+    const unlisten = history.listen(() => {
+      window.scrollTo(0, 0)
+    })
+    return () => {
+      unlisten()
+    }
+  }, [history])
+
+  return null
+}
+
+const RoutedScroll = withRouter(ScrollToTop)
+
+function App() {
+  return (
+    <Router>
+      <RoutedScroll />
+      <ThemeProvider theme={Colors}>
+        <Switch>
+          <PublicOnlyRoute exact path="/" component={LoginAndSignup} />
+        </Switch>
+      </ThemeProvider>
+    </Router>
+  )
 }
 
 export default App
