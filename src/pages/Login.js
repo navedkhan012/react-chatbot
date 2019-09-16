@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
-import styled, { withTheme } from 'styled-components'
 import { FlexWrapper, Card, TextField, Button, FormikForm, StyledText } from '../components'
 import { Formik, Field } from 'formik'
 import Cookies from 'js-cookie'
 
 class Login extends Component {
-  state = {}
-
   handleSubmit = values => {
     if (values.username === 'saurav' && values.password === '123') {
-      Cookies.set('access_token', '#46d35f671bb1b1u1881')
+      Cookies.set('access_token', '#46d35f671bb1b1u1881', { expires: 365 })
       this.props.history.push('/home')
     }
   }
